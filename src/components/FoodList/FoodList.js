@@ -25,17 +25,16 @@ const FoodListItem = (props) => {
 
 const FoodList = (props) => {
   const { items, onDelete } = props;
-  return (
-    <ul className="FoodList">
-      {items.map((item) => {
-        return (
-          <li>
-            <FoodListItem item={item} onDelete={onDelete} />
-          </li>
-        );
-      })}
-    </ul>
-  );
+
+  const renderedItems = items.map((item) => {
+    return (
+      <li key={item.id}>
+        <FoodListItem item={item} onDelete={onDelete} />
+      </li>
+    );
+  });
+
+  return <ul className="FoodList">{renderedItems}</ul>;
 };
 
 export default FoodList;
